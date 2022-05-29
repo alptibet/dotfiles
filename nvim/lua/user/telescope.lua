@@ -8,7 +8,7 @@ local actions = require "telescope.actions"
 telescope.setup {
   defaults = {
 
-    file_ignore_patterns = { "node%_modules.*", ".git/.*", ".DS_Store" },
+    file_ignore_patterns = { "node%_modules.*", ".git/.*", ".DS_Store", ".parcel-cache" },
     prompt_prefix = " ",
     selection_caret = " ",
     path_display = { "smart" },

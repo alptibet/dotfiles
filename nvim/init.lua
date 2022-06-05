@@ -1,21 +1,16 @@
-require "user.options"
-require "user.keymaps"
-require "user.plugins"
-require "user.colorscheme"
-require "user.cmp"
-require "user.lsp"
-require "user.telescope"
-require "user.treesitter"
-require "user.autopairs"
-require "user.comment"
-require "user.gitsigns"
-require "user.nvim-tree"
-require "user.bufferline"
-require "user.lualine"
-require "user.toggleterm"
-require "user.project"
-require "user.impatient"
-require "user.indentline"
-require "user.alpha"
-require "user.whichkey"
-require "user.autocommands"
+pcall(require, 'impatient')
+
+require('packer_commands')
+require('globals')
+require('config')
+require('settings')
+require('colorscheme')
+require('keymappings')
+require('autocmds')
+require('functions')
+
+require('lsp.config')
+require('lsp.setup')
+require('lsp.functions')
+
+require('snippets.react')

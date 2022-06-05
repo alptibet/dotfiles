@@ -1,64 +1,128 @@
-local _M = {}
+local M = {}
+local fn = vim.fn
 
-_M.powerline = {
-    circle = {
-        left = "",
-        right = "",
-    },
-    arrow = {
-        left = "",
-        right = "",
-    },
-    triangle = {
-        left = "",
-        right = "",
-    },
-    none = {
-        left = "",
-        right = "",
-    },
-}
-
-_M.signs = { Error = "", Warn = "", Hint = "", Info = "" }
-
-_M.colors = {
-    bg = "#2e3440",
-    fg = "#ECEFF4",
-    red = "#bf616a",
-    orange = "#d08770",
-    yellow = "#ebcb8b",
-    blue = "#5e81ac",
-    green = "#a3be8c",
-    cyan = "#88c0d0",
-    magenta = "#b48ead",
-    pink = "#FFA19F",
-    grey1 = "#f8fafc",
-    grey2 = "#f0f1f4",
-    grey3 = "#eaecf0",
-    grey4 = "#d9dce3",
-    grey5 = "#c4c9d4",
-    grey6 = "#b5bcc9",
-    grey7 = "#929cb0",
-    grey8 = "#8e99ae",
-    grey9 = "#74819a",
-    grey10 = "#616d85",
-    grey11 = "#464f62",
-    grey12 = "#3a4150",
-    grey13 = "#333a47",
-    grey14 = "#242932",
-    grey15 = "#1e222a",
-    grey16 = "#1c1f26",
-    grey17 = "#0f1115",
-    grey18 = "#0d0e11",
-    grey19 = "#020203",
-}
-
-function _M.setSpacesSize(filetypes)
-    for filetype, size in pairs(filetypes) do
-        vim.cmd(string.format("autocmd FileType %s set sw=%s", filetype, size))
-        vim.cmd(string.format("autocmd FileType %s set ts=%s", filetype, size))
-        vim.cmd(string.format("autocmd FileType %s set sts=%s", filetype, size))
-    end
+M.file_exists = function(path)
+  local f = io.open(path, "r")
+  if f ~= nil then io.close(f) return true else return false end
 end
 
-return _M
+M.get_relative_fname = function()
+  local fname = vim.fn.expand('%:p')
+  return fname:gsub(vim.fn.getcwd() .. '/', '')
+end
+
+M.get_relative_gitpath = function()
+  local fpath = vim.fn.expand('%:h')
+  local fname = vim.fn.expand('%:t')
+  local gitpath = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
+  local ellipsis = '...'
+  local relative_gitpath = fpath:gsub(gitpath, '') .. '/' .. fname
+
+  if vim.fn.winwidth(0) < 200 and #relative_gitpath > 30 then
+    return ellipsis .. relative_gitpath:sub(20, #relative_gitpath)
+  end
+
+  return relative_gitpath
+end
+
+M.sleep = function(n)
+  os.execute("sleep " .. tonumber(n))
+end
+
+M.toggle_quicklist = function()
+  if fn.empty(fn.filter(fn.getwininfo(), 'v:val.quickfix')) == 1 then
+    vim.cmd('copen')
+  else
+    vim.cmd('cclose')
+  end
+end
+
+M.starts_with = function(str, start)
+  return str:sub(1, #start) == start
+end
+
+M.end_with = function(str, ending)
+  return ending == "" or str:sub(- #ending) == ending
+end
+
+M.split = function(s, delimiter)
+  local result = {}
+  for match in (s .. delimiter):gmatch("(.-)" .. delimiter) do
+    table.insert(result, match)
+  end
+
+  return result
+end
+
+M.handle_job_data = function(data)
+  if not data then
+    return nil
+  end
+  if data[#data] == "" then
+    table.remove(data, #data)
+  end
+  if #data < 1 then
+    return nil
+  end
+  return data
+end
+
+M.warnlog = function(message, title)
+  require('notify')(message, "warn", { title = title or "Warning" })
+end
+
+M.errorlog = function(message, title)
+  require('notify')(message, "error", { title = title or "Error" })
+end
+
+M.jobstart = function(cmd, on_finish)
+  local has_error = false
+  local lines = {}
+
+  local function on_event(_, data, event)
+    if event == "stdout" then
+      data = M.handle_job_data(data)
+      if not data then
+        return
+      end
+
+      for i = 1, #data do
+        table.insert(lines, data[i])
+      end
+    elseif event == "stderr" then
+      data = M.handle_job_data(data)
+      if not data then
+        return
+      end
+
+      has_error = true
+      local error_message = ""
+      for _, line in ipairs(data) do
+        error_message = error_message .. line
+      end
+      M.log("Error during running a job: " .. error_message)
+    elseif event == "exit" then
+      if not has_error then
+        on_finish(lines)
+      end
+    end
+  end
+
+  vim.fn.jobstart(cmd, {
+    on_stderr = on_event,
+    on_stdout = on_event,
+    on_exit = on_event,
+    stdout_buffered = true,
+    stderr_buffered = true,
+  })
+end
+
+M.remove_whitespaces = function(string)
+  return string:gsub("%s+", "")
+end
+
+M.add_whitespaces = function(number)
+  return string.rep(" ", number)
+end
+
+return M

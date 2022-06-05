@@ -96,7 +96,8 @@ local normal_mode_mappings = {
   ["b"] = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
-  }, ["V"] = { '<C-W>s', 'split below' },
+  },
+  ["V"] = { '<C-W>s', 'split below' },
   ["q"] = { 'quicklist' },
   ["f"] = {
     "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",

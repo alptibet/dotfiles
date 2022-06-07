@@ -5,11 +5,8 @@ local options = {
   cursorline     = true,                    --- Highlight of current line
   emoji          = false,                   --- Fix emoji display
   expandtab      = true,                    --- Use spaces instead of tabs
-  foldlevelstart = 99,                      --- Expand all folds by default
-  foldtext       = "CustomFold()",          --- Emit custom function for foldtext
   ignorecase     = true,                    --- Needed for smartcase
   laststatus     = 3,                       --- Have a global statusline at the bottom instead of one for each window
-  lazyredraw     = true,                    --- Makes macros faster & prevent errors in complicated mappings
   mouse          = "a",                     --- Enable mouse
   number         = true,                    --- Shows current line number
   pumheight      = 10,                      --- Max num of items in completion menu
@@ -45,22 +42,11 @@ local options = {
   showmode       = false,                   --- Don't show things like -- INSERT -- anymore
 }
 
-local globals = {
-  dashboard_default_executive = EcoVim.plugins.dashboard.fuzzy_plugin, --- Use fuzzy search plugin in dashboard
-  fillchars                   = "fold:\\ ", --- Fill chars needed for folds
-  mapleader                   = ' ',        --- Map leader key to SPC
-  speeddating_no_mappings     = 1,          --- Disable default mappings for speeddating
-}
-
-vim.opt.shortmess:append('c');
-vim.opt.formatoptions:remove('c');
-vim.opt.formatoptions:remove('r');
-vim.opt.formatoptions:remove('o');
+vim.opt.shortmess:append "c"
 
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-for k, v in pairs(globals) do
-  vim.g[k] = v
-end
+vim.cmd "set whichwrap+=<,>,[,],h,l"
+vim.cmd [[set iskeyword+=-]]

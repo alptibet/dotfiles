@@ -61,6 +61,9 @@ return packer.startup(function(use)
   use "prettier/vim-prettier"
   use "digitaltoad/vim-pug"
   use "ap/vim-css-color"
+  use "stevearc/dressing.nvim"
+  use "Shatur/neovim-session-manager"
+  use "ggandor/lightspeed.nvim"
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use 'drewtempelmeyer/palenight.vim'
@@ -94,7 +97,9 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
   use "JoosepAlviste/nvim-ts-context-commentstring"
-
+  use { 'p00f/nvim-ts-rainbow', after = { 'nvim-treesitter' } }
+  use { 'nvim-treesitter/nvim-treesitter-textobjects', after = { 'nvim-treesitter' } }
+  use { 'RRethy/nvim-treesitter-textsubjects', after = { 'nvim-treesitter' } }
   -- Git
   use "lewis6991/gitsigns.nvim"
 

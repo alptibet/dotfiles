@@ -8,7 +8,7 @@ if not config_status_ok then
   return
 end
 
-local signs = require("utils").signs
+local icons = require("user.icons")
 require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
       auto_reload_on_write = true,
       create_in_closed_folder = false,
@@ -72,10 +72,10 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
             folder = {
               arrow_closed = "",
               arrow_open = "",
-              default = "",
-              open = "",
-              empty = "",
-              empty_open = "",
+              default = icons.folder,
+              open = icons.folderOpen,
+              empty = icons.folderNoBg,
+              empty_open = icons.folderOpenNoBg,
               symlink = "",
               symlink_open = "",
             },

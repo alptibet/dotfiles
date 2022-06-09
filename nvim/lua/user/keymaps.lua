@@ -34,11 +34,19 @@ keymap("n", "<S-Right>", ":vertical resize -2<CR>", opts)
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<Tab>", ":bnext<CR>", opts)
+keymap("n", "<S-Tab>", "bprevious<CR>", opts)
+
+-- Remove highlights
+keymap("n", "<CR>", ":noh<CR><CR>", opts)
 
 -- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+keymap("v", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
+keymap("v", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
+-- Move selected line / block of text in visual mode
+keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)

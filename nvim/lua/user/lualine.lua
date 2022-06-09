@@ -5,12 +5,12 @@ if not ok then
 end
 
 local colors = {
-  blue   = '#80a0ff',
-  cyan   = '#79dac8',
-  black  = '#080808',
+  blue   = '#00ffd2',
+  cyan   = '#004687',
+  black  = '#24283b',
   white  = '#c6c6c6',
   red    = '#ff5189',
-  violet = '#d183e8',
+  violet = '#ff4499',
   grey   = '#303030',
 }
 

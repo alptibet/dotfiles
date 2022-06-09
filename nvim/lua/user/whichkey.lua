@@ -88,15 +88,21 @@ local mappings = {
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
-  ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["f"] = {
     "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Find files",
   },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-  ["r"] = {"<cmd>Prettier<cr>", "Format with Prettier"},
   ["R"] = {"<cmd>NvimTreeRefresh<cr>", "Refresh Explorer"},
+
+  s={
+    name = 'Session Manager',
+    c = { '<cmd>SessionManager load_session<CR>', 'Choose Session' },
+    r = { '<cmd>SessionManager delete_session<CR>', 'Remove Session' },
+    l = { '<cmd>SessionManager load_last_session<CR>', 'Load last session' },
+    s = { '<cmd>SessionManager save_session<CR>', 'Save session' },
+  },
 
   p = {
     name = "Packer",
@@ -161,7 +167,7 @@ local mappings = {
       "Workspace Symbols",
     },
   },
-  s = {
+  S = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },

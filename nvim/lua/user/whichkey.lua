@@ -101,7 +101,7 @@ local mappings = {
     c = { '<cmd>SessionManager load_session<CR>', 'Choose Session' },
     r = { '<cmd>SessionManager delete_session<CR>', 'Remove Session' },
     l = { '<cmd>SessionManager load_last_session<CR>', 'Load last session' },
-    s = { '<cmd>SessionManager save_session<CR>', 'Save session' },
+    s = { '<cmd>SessionManager save_current_session<CR>', 'Save session' },
   },
 
   p = {

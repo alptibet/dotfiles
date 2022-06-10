@@ -64,11 +64,9 @@ return packer.startup(function(use)
   use "stevearc/dressing.nvim"
   use "Shatur/neovim-session-manager"
   use "ggandor/lightspeed.nvim"
+  use "rcarriga/nvim-notify"
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use 'drewtempelmeyer/palenight.vim'
-  use 'joshdick/onedark.vim'
-  use 'rmehri01/onenord.nvim'
   use 'folke/tokyonight.nvim'
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin

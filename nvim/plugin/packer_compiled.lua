@@ -189,6 +189,11 @@ _G.packer_plugins = {
     path = "/Users/alptibet/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-notify"] = {
+    loaded = true,
+    path = "/Users/alptibet/.local/share/nvim/site/pack/packer/start/nvim-notify",
+    url = "https://github.com/rcarriga/nvim-notify"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/Users/alptibet/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
@@ -230,25 +235,10 @@ _G.packer_plugins = {
     path = "/Users/alptibet/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
-  ["onedark.vim"] = {
-    loaded = true,
-    path = "/Users/alptibet/.local/share/nvim/site/pack/packer/start/onedark.vim",
-    url = "https://github.com/joshdick/onedark.vim"
-  },
-  ["onenord.nvim"] = {
-    loaded = true,
-    path = "/Users/alptibet/.local/share/nvim/site/pack/packer/start/onenord.nvim",
-    url = "https://github.com/rmehri01/onenord.nvim"
-  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/alptibet/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
-  },
-  ["palenight.vim"] = {
-    loaded = true,
-    path = "/Users/alptibet/.local/share/nvim/site/pack/packer/start/palenight.vim",
-    url = "https://github.com/drewtempelmeyer/palenight.vim"
   },
   ["plenary.nvim"] = {
     loaded = true,

@@ -1,6 +1,6 @@
-local opts = { noremap = true, silent = true }
+local opts = {noremap = true, silent = true }
 
-local term_opts = { silent = true }
+-- local term_opts = { silent = true }
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
@@ -9,7 +9,6 @@ local keymap = vim.api.nvim_set_keymap
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -17,7 +16,6 @@ vim.g.maplocalleader = " "
 --   visual_block_mode = "x",
 --   term_mode = "t",
 --   command_mode = "c",
-
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -35,10 +33,13 @@ keymap("n", "<S-Right>", ":vertical resize -2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<Tab>", ":bnext<CR>", opts)
-keymap("n", "<S-Tab>", "bprevious<CR>", opts)
+keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
 
 -- Remove highlights
 keymap("n", "<CR>", ":noh<CR><CR>", opts)
+
+--Open telescope file browser
+keymap("n", "<C-e>", ":Telescope file_browser<CR>", opts)
 
 -- Move text up and down
 keymap("v", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)

@@ -88,7 +88,7 @@ return packer.startup(function(use)
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
-
+  use "nvim-telescope/telescope-file-browser.nvim"
   -- Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",

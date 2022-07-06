@@ -68,7 +68,7 @@ local function button(sc, txt, keybind, keybind_opts)
     cursor = 5,
     width = 50,
     align_shortcut = "right",
-    hl = "Primary",
+    hl = "Accent",
   }
 
   if keybind then

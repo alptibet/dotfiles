@@ -16,6 +16,7 @@ vim.cmd('colorscheme tokyonight')
 
 vim.highlight.create('Primary', { guifg = "#488DFF" }, false);
 vim.highlight.create('Secondary', { guifg = "#FFA630" }, false);
+vim.highlight.create('Accent', { guifg = "#4D6F2A" }, false);
 
 vim.highlight.create('PrimaryBold', { gui = "bold", guifg = "#488DFF" }, false);
 vim.highlight.create('SecondaryBold', { gui = "bold", guifg = "#FFA630" }, false);

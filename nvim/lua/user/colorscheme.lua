@@ -3,6 +3,7 @@ if not present then
   return
 end
 
+
 local tokyonight_colors = tk_colors.setup({})
 
 -- Tokyonight config
@@ -12,6 +13,7 @@ vim.g.tokyonight_colors = {
   border = '#1A1B26';
 }
 
+-- vim.g.ayucolor = 'dark'
 vim.cmd('colorscheme tokyonight')
 
 vim.highlight.create('Primary', { guifg = "#488DFF" }, false);

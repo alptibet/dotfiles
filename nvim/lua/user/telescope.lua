@@ -101,10 +101,6 @@ telescope.setup {
       previewer = false,
       initial_mode = "normal",
     },
-    planets = {
-      show_pluto = true,
-      show_moon = true,
-    },
     colorscheme = {
       -- enable_preview = true,
     },

@@ -65,7 +65,6 @@ return packer.startup(function(use)
   use "Shatur/neovim-session-manager"
   use "ggandor/lightspeed.nvim"
   use "rcarriga/nvim-notify"
-  use "karb94/neoscroll.nvim"
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use 'folke/tokyonight.nvim'
